@@ -19,7 +19,7 @@
     "build": "rimraf ./dist && pnpm run build:cjs && pnpm run build:esm",
     "build:cjs": "tsc -p tsconfig.cjs.json",
     "build:esm": "tsc -p tsconfig.esm.json",
-    "release": "pnpm run commit && pnpm exec release-it",
+    "publish": "release-it",
     "commit": "git add . && cz"
   },
   "keywords": [
