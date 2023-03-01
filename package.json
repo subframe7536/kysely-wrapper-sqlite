@@ -1,0 +1,48 @@
+{
+  "name": "kysely-wrapper-sqlite",
+  "version": "0.0.0",
+  "description": "kysely wrapper for sqlite with auto serialize/deserialize and timestamp",
+  "main": "dist/cjs/index.js",
+  "module": "dist/esm/index.js",
+  "exports": {
+    ".": {
+      "require": "./dist/cjs/index.js",
+      "import": "./dist/esm/index.js"
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/subframe7536/kysely-wrapper-sqlite.git"
+  },
+  "scripts": {
+    "test": "ts-node test/index.ts",
+    "build": "rimraf ./dist && pnpm run build:cjs && pnpm run build:esm",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "release": "pnpm run commit && pnpm exec release-it",
+    "commit": "git add . && cz"
+  },
+  "keywords": [
+    "kysely",
+    "sqlite",
+    "typescript"
+  ],
+  "author": "subframe7536",
+  "license": "MIT",
+  "devDependencies": {
+    "@antfu/eslint-config": "^0.35.3",
+    "@release-it/conventional-changelog": "^5.1.1",
+    "@types/better-sqlite3": "^7.6.3",
+    "@types/node": "^18.14.2",
+    "better-sqlite3": "^8.1.0",
+    "eslint": "^8.35.0",
+    "release-it": "^15.6.1",
+    "rimraf": "^4.1.2",
+    "ts-node": "^10.9.1",
+    "typescript": "^4.9.5"
+  },
+  "dependencies": {
+    "kysely": "^0.23.4"
+  },
+  "type": "module"
+}
