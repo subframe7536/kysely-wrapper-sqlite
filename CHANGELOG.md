@@ -1,5 +1,22 @@
 # Changelog
 
+### [0.0.3](https://github.com/subframe7536/kysely-wrapper-sqlite/compare/0.0.2...0.0.3) (2023-03-04)
+
+
+### Features
+
+* add toSQL() ([97d45c1](https://github.com/subframe7536/kysely-wrapper-sqlite/commit/97d45c1a50ca761b7f9c804c2ed7cfdbf5d2e180))
+
+
+### Bug Fixes
+
+* move kysely to dependencies ([6a4156c](https://github.com/subframe7536/kysely-wrapper-sqlite/commit/6a4156c7aa8edfb391dd3347ac9eaae788451e48))
+
+
+### Others
+
+* add license in readme ([397ecca](https://github.com/subframe7536/kysely-wrapper-sqlite/commit/397ecca29e12076c284def8d70605969cf6e1558))
+
 ### [0.0.2](https://github.com/subframe7536/kysely-wrapper-sqlite/compare/0.0.1...0.0.2) (2023-03-02)
 
 
