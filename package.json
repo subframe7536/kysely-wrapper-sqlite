@@ -1,7 +1,7 @@
 {
   "name": "kysely-wrapper-sqlite",
   "version": "0.0.2",
-  "description": "kysely wrapper for sqlite with auto serialize/deserialize and timestamp",
+  "description": "kysely wrapper for sqlite with serialize plugin and insert/update time",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
   "exports": {

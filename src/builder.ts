@@ -1,4 +1,4 @@
-import type { LogEvent, Transaction } from 'kysely'
+import type { Compilable, LogEvent, Transaction } from 'kysely'
 import { Kysely, SqliteDialect, sql } from 'kysely'
 import type { DataTypeExpression } from 'kysely/dist/cjs/parser/data-type-parser'
 import Sqlite from 'better-sqlite3'
@@ -168,5 +168,9 @@ export class SqliteDB<DB extends Record<string, any>> {
         console.error(err)
         return undefined
       })
+  }
+
+  public toSQL<T extends Compilable>(cb: (db: Kysely<DB>) => T) {
+    return cb(this.kysely).compile()
   }
 }

@@ -62,16 +62,25 @@ db.init(true)
     console.log('result:')
     console.log(result)
   })
+  .then(() => {
+    const { sql, parameters } = db.toSQL(d => d
+      .selectFrom('test')
+      .where('person', '=', { name: '1' })
+      .selectAll(),
+    )
+    console.log(sql)
+    console.log(parameters)
+  })
 ```
 
 ### log
 
 ```log
-0.4383000135421753ms drop table if exists "test" []
-0.23370003700256348ms create table if not exists "test" ("id" integer primary key autoincrement, "person" text default '{"name":"test"}', "gender" text not null, "createAt" date, "updateAt" date) []
-0.18989992141723633ms create index if not exists "idx_person" on "test" ("person") []
-0.18119990825653076ms create index if not exists "idx_id_gender" on "test" ("id", "gender") []
-0.16439998149871826ms
+0.39420008659362793ms drop table if exists "test" []
+0.17670011520385742ms create table if not exists "test" ("id" integer primary key autoincrement, "person" text default '{"name":"test"}', "gender" text not null, "createAt" date, "updateAt" date) []
+0.1129000186920166ms create index if not exists "idx_person" on "test" ("person") []
+0.09209990501403809ms create index if not exists "idx_id_gender" on "test" ("id", "gender") []
+0.10260009765625ms
       create trigger if not exists test_createAt
       after insert
       on "test"
@@ -81,7 +90,7 @@ db.init(true)
         where "id" = NEW."id";
       end
        []
-0.1881999969482422ms
+0.14520001411437988ms
       create trigger if not exists test_updateAt
       after update
       on "test"
@@ -91,20 +100,22 @@ db.init(true)
         where "id" = NEW."id";
       end
        []
-0.06020009517669678ms begin []
-1.2976999282836914ms insert into "test" ("gender") values (?) [ 'false' ]
-0.043000102043151855ms commit []
-0.16610002517700195ms select * from "test" []
+0.029700040817260742ms begin []
+0.9845001697540283ms insert into "test" ("gender") values (?) [ 'false' ]
+0.04629993438720703ms commit []
+0.11979985237121582ms select * from "test" []
 result:
 [
   {
     id: 1,
     person: { name: 'test' },
     gender: false,
-    createAt: 2023-03-01T09:37:05.000Z,
-    updateAt: 2023-03-01T09:37:05.000Z
+    createAt: 2023-03-04T05:26:49.000Z,
+    updateAt: 2023-03-04T05:26:49.000Z
   }
 ]
+select * from "test" where "person" = ?
+[ '{"name":"1"}' ]
 ```
 
 ## todos

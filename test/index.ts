@@ -44,3 +44,12 @@ db.init(true)
     console.log('result:')
     console.log(result)
   })
+  .then(() => {
+    const { sql, parameters } = db.toSQL(d => d
+      .selectFrom('test')
+      .where('person', '=', { name: '1' })
+      .selectAll(),
+    )
+    console.log(sql)
+    console.log(parameters)
+  })
