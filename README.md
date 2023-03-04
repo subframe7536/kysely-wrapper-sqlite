@@ -11,7 +11,7 @@ kysely wrapper for sqlite
 ## install
 
 ```shell
-pnpm i better-sqlite3 kysely kysely-wrapper-sqlite
+pnpm i better-sqlite3 kysely-wrapper-sqlite
 ```
 
 ## example
