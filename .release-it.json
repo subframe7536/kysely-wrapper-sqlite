@@ -5,9 +5,6 @@
   "github": {
     "release": true
   },
-  "npm": {
-    "publish": true
-  },
   "plugins": {
     "@release-it/conventional-changelog": {
       "ignoreRecommendedBump": true,
