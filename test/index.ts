@@ -25,7 +25,9 @@ const db = new SqliteDB<DB>({
       property: {
         primary: 'id', // sqlite only support one single/composite primary key,
         index: ['person', ['id', 'gender']],
-        timestamp: true,
+        timestamp: {
+          create: 'createAt',
+        },
       },
     },
   },

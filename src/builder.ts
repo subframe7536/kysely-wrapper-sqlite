@@ -65,12 +65,12 @@ export class SqliteDB<DB extends Record<string, any>> {
       let tableSql = this.kysely.schema.createTable(tableName)
       let _triggerKey = 'rowid'
       let _haveAutoKey = false
-      let _insertColumnName = 'createAt'
-      let _updateColumnName = 'updateAt'
+      let _insertColumnName
+      let _updateColumnName
       if (tableProperty?.timestamp && !isBoolean(tableProperty.timestamp)) {
         const { create, update } = tableProperty.timestamp as { create?: string; update?: string }
-        _insertColumnName = create ?? _insertColumnName
-        _updateColumnName = update ?? _updateColumnName
+        _insertColumnName = create
+        _updateColumnName = update
       }
       for (const columnName in columnList) {
         if (!Object.prototype.hasOwnProperty.call(columnList, columnName)) {
@@ -109,9 +109,12 @@ export class SqliteDB<DB extends Record<string, any>> {
         const _primary = tableProperty.primary as string | string[] | undefined
         const _unique = tableProperty.unique as string[] | (string[])[] | undefined
         if (tableProperty.timestamp) {
-          tableSql = tableSql
-            .addColumn(_insertColumnName, 'date')
-            .addColumn(_updateColumnName, 'date')
+          if (_insertColumnName) {
+            tableSql = tableSql.addColumn(_insertColumnName, 'date')
+          }
+          if (_updateColumnName) {
+            tableSql = tableSql.addColumn(_updateColumnName, 'date')
+          }
         }
         if (!_haveAutoKey && _primary) {
           const is = isString(_primary)
@@ -134,8 +137,8 @@ export class SqliteDB<DB extends Record<string, any>> {
         }
       }
       if (tableProperty?.timestamp) {
-        await this.createTimeTrigger(tableName, 'insert', _insertColumnName, _triggerKey)
-        await this.createTimeTrigger(tableName, 'update', _updateColumnName, _triggerKey)
+        _insertColumnName && await this.createTimeTrigger(tableName, 'insert', _insertColumnName, _triggerKey)
+        _updateColumnName && await this.createTimeTrigger(tableName, 'update', _updateColumnName, _triggerKey)
       }
     }
     this.status = DBStatus.ready
