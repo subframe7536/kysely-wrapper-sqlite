@@ -1,5 +1,13 @@
 # Changelog
 
+### [0.0.4](https://github.com/subframe7536/kysely-wrapper-sqlite/compare/0.0.3...0.0.4) (2023-03-10)
+
+
+### Bug Fixes
+
+* timestamp option fix ([e63c6a8](https://github.com/subframe7536/kysely-wrapper-sqlite/commit/e63c6a8c17291bfa2abb874cef6c946b9569467f))
+* update release-it config ([f0b5537](https://github.com/subframe7536/kysely-wrapper-sqlite/commit/f0b55372337829043b5eb589623e510060a33192))
+
 ### [0.0.3](https://github.com/subframe7536/kysely-wrapper-sqlite/compare/0.0.2...0.0.3) (2023-03-04)
 
 
