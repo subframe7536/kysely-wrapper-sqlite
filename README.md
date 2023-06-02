@@ -1,3 +1,7 @@
+# DEPRECATION
+
+MOVE TO [kysely-sqlite-tools](https://github.com/subframe7536/kysely-sqlite-tools)
+
 # Kysely Sqlite Wrapper
 
 kysely wrapper for sqlite
